@@ -14,6 +14,7 @@ export class CircuitBreaker<T, U> {
 
   constructor(
     private readonly requestFunction: (params: T) => Promise<U>,
+    public readonly instanceName: string,
     options?: CircuitBreakerOptions,
   ) {
     this.failureThreshold = options?.failureThreshold ?? 5;
@@ -36,7 +37,8 @@ export class CircuitBreaker<T, U> {
       const response = await this.requestFunction(params);
       return this.success(response);
     } catch (err) {
-      return this.failure(err.message);
+      this.failure(err.message);
+      throw err;
     }
   }
 
@@ -48,12 +50,12 @@ export class CircuitBreaker<T, U> {
     return data;
   }
 
-  failure(data: any) {
+  failure(msg: any) {
     this.failureCount += 1;
     if (this.state === 'HALF' || this.failureCount >= this.failureThreshold) {
       this.state = 'OPENED';
       this.resetAfter = Date.now() + this.timeout;
     }
-    return data;
+    console.error('');
   }
 }
