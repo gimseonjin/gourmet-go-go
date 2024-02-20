@@ -1,74 +1,19 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+GitHub 프로젝트 명: GourmetGo
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+프로젝트 설명:
+GourmetGo는 맛집 검색과 음식 예약을 결합한 서비스로, 사용자가 원하는 지역의 맛집을 쉽게 찾고, 인기 있는 음식을 미리 주문할 수 있게 해주는 플랫폼입니다. 이 서비스는 다양한 지역의 맛집 정보를 제공하고, 사용자가 직접 리뷰를 남길 수 있으며, 인기 키워드를 통해 최신 트렌드의 맛집을 추천받을 수 있습니다. GourmetGo는 사용자에게 개인화된 맛집 추천과 함께, 예약 및 결제 기능을 통해 식사 계획을 미리 준비할 수 있는 편리함을 제공합니다.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+주요 기능:
+맛집 검색: 사용자는 키워드와 지역 정보를 기반으로 맛집을 검색할 수 있습니다.
+인기 키워드 기반 추천: 가장 인기 있는 검색 키워드를 기반으로 사용자에게 맛집을 추천합니다.
+음식 예약 및 주문: 선택한 맛집의 메뉴를 미리 예약하고 주문할 수 있습니다.
+사용자 리뷰: 방문한 맛집에 대한 리뷰를 남기고, 다른 사용자의 리뷰를 참조할 수 있습니다.
+개인화된 추천: 사용자의 검색 및 주문 기록을 분석하여 개인화된 맛집 및 음식 추천을 제공합니다.
 
-## Description
+기술 스택 및 구현 상세:
+백엔드: Nestjs를 기반으로 RESTful API 설계 및 구현
+데이터베이스: PostgreSQL을 사용하여 검색 데이터, 사용자 정보, 주문 내역 저장
+외부 API 연동: 네이버와 카카오의 지역 검색 API를 활용하여 맛집 정보 제공
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
-# gourmet-go-go
+목표와 비전:
+GourmetGo는 맛집 탐색의 번거로움을 줄이고, 사용자에게 새로운 식사 경험을 제공하는 것을 목표로 합니다. 사용자의 선호도와 트렌드를 반영한 맞춤 추천 기능을 통해, 더 많은 사람들이 새로운 맛집을 발견하고 즐길 수 있도록 하는 것이 우리의 비전입니다.
