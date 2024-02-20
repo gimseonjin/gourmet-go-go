@@ -19,7 +19,7 @@ import { HttpModule, HttpService } from '@nestjs/axios';
       useFactory: (config: ConfigService, httpSvc: HttpService) => {
         const { naverClientId, naverClientSecret, kakaoRestApiKey } =
           config.get('api.credentials');
-          
+
         const bots: ISearchBot[] = [
           new NaverSeachBot({ naverClientId, naverClientSecret }, httpSvc),
           new KakaoSeachBot({ kakaoRestApiKey }, httpSvc),
@@ -38,5 +38,6 @@ import { HttpModule, HttpService } from '@nestjs/axios';
       inject: [ConfigService, HttpService],
     },
   ],
+  exports: [SearchApi],
 })
 export class ApisModule {}
