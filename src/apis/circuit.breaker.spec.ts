@@ -1,4 +1,4 @@
-import CircuitBreaker from './circuit.breaker';
+import { CircuitBreaker } from './circuit.breaker';
 
 describe('CircuitBreaker', () => {
   test('닫힌 상태에서 요청 함수를 성공적으로 호출해야 함', async () => {
@@ -7,8 +7,8 @@ describe('CircuitBreaker', () => {
       .mockResolvedValue({ data: 'success' });
     const breaker = new CircuitBreaker(mockRequestFunction);
 
-    const result = await breaker.fire();
-    expect(result).toEqual('success');
+    const result = await breaker.fire({});
+    expect(result).toEqual({ data: 'success' });
     expect(mockRequestFunction).toHaveBeenCalledTimes(1);
   });
 
@@ -20,13 +20,13 @@ describe('CircuitBreaker', () => {
     });
 
     try {
-      await breaker.fire();
+      await breaker.fire({});
     } catch (error) {}
 
     expect(breaker['state']).toBe('OPENED');
     expect(mockRequestFunction).toHaveBeenCalledTimes(1);
 
-    await expect(breaker.fire()).rejects.toThrow(
+    await expect(breaker.fire({})).rejects.toThrow(
       'Circuit is in open state right now. Please try again later.',
     );
   });
@@ -40,12 +40,12 @@ describe('CircuitBreaker', () => {
     });
 
     try {
-      await breaker.fire();
+      await breaker.fire({});
     } catch (error) {}
 
     jest.advanceTimersByTime(200);
 
-    breaker.fire().catch((error) => {
+    breaker.fire({}).catch((error) => {
       expect(breaker['state']).toBe('HALF');
     });
 
@@ -64,14 +64,14 @@ describe('CircuitBreaker', () => {
     });
 
     try {
-      await breaker.fire();
+      await breaker.fire({});
     } catch (error) {}
 
     jest.advanceTimersByTime(200);
 
-    const result = await breaker.fire();
+    const result = await breaker.fire({});
 
-    expect(result).toEqual('success');
+    expect(result).toEqual({ data: 'success' });
     expect(breaker['state']).toBe('CLOSED');
     expect(mockRequestFunction).toHaveBeenCalledTimes(2);
 

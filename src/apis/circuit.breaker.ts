@@ -5,7 +5,7 @@ type CircuitBreakerOptions = {
   timeout?: number;
 };
 
-export default class CircuitBreaker {
+export class CircuitBreaker<T, U> {
   private state: 'OPENED' | 'CLOSED' | 'HALF' = 'CLOSED';
   private failureCount = 0;
   private timeout: number;
@@ -13,7 +13,7 @@ export default class CircuitBreaker {
   private resetAfter: number;
 
   constructor(
-    private readonly request: RequestFunction,
+    private readonly requestFunction: (params: T) => Promise<U>,
     options?: CircuitBreakerOptions,
   ) {
     this.failureThreshold = options?.failureThreshold ?? 5;
@@ -22,7 +22,7 @@ export default class CircuitBreaker {
     this.resetAfter = Date.now() + this.timeout;
   }
 
-  async fire() {
+  async fire(params: T): Promise<U> {
     if (this.state === 'OPENED') {
       if (this.resetAfter <= Date.now()) {
         this.state = 'HALF';
@@ -33,8 +33,8 @@ export default class CircuitBreaker {
       }
     }
     try {
-      const response = await this.request();
-      return this.success(response.data);
+      const response = await this.requestFunction(params);
+      return this.success(response);
     } catch (err) {
       return this.failure(err.message);
     }
