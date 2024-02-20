@@ -9,7 +9,7 @@ import {
 @Injectable()
 export class SearchRepository implements ISearchRepository {
   constructor(private readonly searchApi: SearchApi) {}
-  
+
   async findByKeyword(
     params: SearchByKeywordParams,
   ): Promise<SearchByKeywordReturns> {
